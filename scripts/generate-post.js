@@ -147,8 +147,8 @@ ${CLINIC_INFO}
     let slug = "";
     try {
         const slugModel = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
-        const slugResult = await slugModel.generateContent(`블로그 글 제목: "${topic}"\n\n위 제목을 바탕으로 검색 엔진 최적화(SEO)에 유리한 영문 URL Slug를 만들어주세요 (소문자, 하이픈만).`);
-        slug = slugResult.response.text().trim().toLowerCase().replace(/[^a-z0-9-]/g, '');
+        const slugResult = await slugModel.generateContent(`블로그 글 제목: "${topic}"\n\n위 제목에서 핵심 키워드 2~4개만 뽑아 영문 URL slug를 만들어주세요.\n규칙: 소문자, 하이픈(-) 구분, 최대 50자, slug만 출력.\n예시: fatty-liver-prevention-guide`);
+        slug = slugResult.response.text().trim().toLowerCase().replace(/[^a-z0-9-]/g, '').substring(0, 60);
     } catch (e) {
         slug = Math.random().toString(36).substring(7);
     }
