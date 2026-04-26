@@ -7116,7 +7116,7 @@ function Logo({ dark = false }) {
 }
 
 // ── VARIANT A: White/Clean ──────────────────────────────────────
-function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen }) {
+function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPosts }) {
   const scrollTo = (id) => {
     setActivePage("home");
     setMobileOpen(false);
@@ -7435,7 +7435,7 @@ function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen }) {
 }
 
 // ── VARIANT B: Minimal White, Bold Typography ──────────────────
-function VariantB({ activePage, setActivePage, mobileOpen, setMobileOpen }) {
+function VariantB({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPosts }) {
   const scrollTo = (id) => {
     setMobileOpen(false);
     setTimeout(() => {
@@ -7910,8 +7910,8 @@ function App() {
       `}</style>
 
       {tweaks.variant === "A"
-        ? <VariantA activePage={activePage} setActivePage={setActivePage} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
-        : <VariantB activePage={activePage} setActivePage={setActivePage} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
+        ? <VariantA activePage={activePage} setActivePage={setActivePage} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} blogPosts={blogPosts} />
+        : <VariantB activePage={activePage} setActivePage={setActivePage} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} blogPosts={blogPosts} />
       }
 
       {/* Tweak Panel */}
