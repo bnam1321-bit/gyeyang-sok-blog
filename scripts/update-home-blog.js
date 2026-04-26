@@ -103,7 +103,7 @@ if (match) {
 }
 
 `;
-    html = html.substring(0, match.index) + newBlogCard + "function App";
+    html = html.substring(0, match.index) + newBlogCard + "function App" + html.substring(match.index + match[0].length);
 }
 
 // 4. Update 전체 보기 button
