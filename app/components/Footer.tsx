@@ -29,8 +29,8 @@ export default function Footer() {
                         <ul className="space-y-4 text-sm font-medium">
                             <li><Link href="/services" className="hover:text-white transition-colors">진료안내</Link></li>
                             <li><Link href="/blog" className="hover:text-white transition-colors">건강정보</Link></li>
-                            <li><a href="#hours" className="hover:text-white transition-colors">진료시간</a></li>
-                            <li><a href="#map" className="hover:text-white transition-colors">오시는길</a></li>
+                            <li><Link href="/#hours" className="hover:text-white transition-colors">진료시간</Link></li>
+                            <li><Link href="/#map" className="hover:text-white transition-colors">오시는길</Link></li>
                         </ul>
                     </div>
 

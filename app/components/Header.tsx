@@ -9,20 +9,22 @@ export default function Header() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-20">
                     {/* Logo Area */}
-                    <Link href="/" className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-xl">S</div>
-                        <div className="flex flex-col">
-                            <span className="text-primary font-black text-lg leading-tight tracking-tight">인천계양속편한내과</span>
-                            <span className="text-[10px] text-slate-400 font-medium uppercase tracking-widest">SokPyeonHan Internal Medicine</span>
-                        </div>
+                    <Link href="/" className="flex items-center">
+                        <Image 
+                            src="/images/extracted/abb9385e-cd27-4803-925c-53c237ff0b10.png"
+                            alt="인천계양속편한내과"
+                            width={240}
+                            height={60}
+                            className="h-14 w-auto object-contain"
+                        />
                     </Link>
 
                     {/* Navigation */}
                     <nav className="hidden md:flex items-center gap-10">
                         <Link href="/services" className="text-slate-600 hover:text-primary font-bold transition-colors">진료안내</Link>
                         <Link href="/blog" className="text-slate-600 hover:text-primary font-bold transition-colors">건강정보</Link>
-                        <a href="#hours" className="text-slate-600 hover:text-primary font-bold transition-colors">진료시간</a>
-                        <a href="#map" className="text-slate-600 hover:text-primary font-bold transition-colors">오시는길</a>
+                        <Link href="/#hours" className="text-slate-600 hover:text-primary font-bold transition-colors">진료시간</Link>
+                        <Link href="/#map" className="text-slate-600 hover:text-primary font-bold transition-colors">오시는길</Link>
                     </nav>
 
                     {/* CTA Button */}
