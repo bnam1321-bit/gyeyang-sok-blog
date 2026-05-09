@@ -1,4 +1,4 @@
-const fs = require('fs');
+﻿const fs = require('fs');
 const path = require('path');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { format } = require('date-fns');
@@ -38,7 +38,7 @@ async function generatePost() {
         console.log(`🎯 지정된 주제: [${topic}]`);
     } else {
         try {
-            const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+            const model = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
             const topicPrompt = `
             당신은 내과 병원 블로그 마케터입니다.
             기존에 작성된 블로그 글 제목들은 다음과 같습니다:
@@ -73,7 +73,7 @@ async function generatePost() {
         try {
             console.log(`🚀 Gemini 모델로 글 작성 시도 (${attempt}/${MAX_RETRIES})...`);
             const model = genAI.getGenerativeModel({
-                model: "gemini-2.5-flash",
+                model: "gemini-2.5-pro",
                 generationConfig: {
                     temperature: 0.7,
                 }
@@ -146,7 +146,7 @@ ${CLINIC_INFO}
 
     let slug = "";
     try {
-        const slugModel = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+        const slugModel = genAI.getGenerativeModel({ model: "gemini-2.5-pro" });
         const slugResult = await slugModel.generateContent(`블로그 글 제목: "${topic}"\n\n위 제목에서 핵심 키워드 2~4개만 뽑아 영문 URL slug를 만들어주세요.\n규칙: 소문자, 하이픈(-) 구분, 최대 50자, slug만 출력.\n예시: fatty-liver-prevention-guide`);
         slug = slugResult.response.text().trim().toLowerCase().replace(/[^a-z0-9-]/g, '').substring(0, 60);
     } catch (e) {
