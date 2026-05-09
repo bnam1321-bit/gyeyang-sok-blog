@@ -1,4 +1,4 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { format } = require('date-fns');
@@ -116,6 +116,9 @@ coverImage: ""
 
 ## 마무리
 (요약 및 진료 권유)
+
+## 주의사항
+- 본문은 반드시 3,000자 이상 작성할 것 (핵심 정보를 충분히 포함)
 
 ${CLINIC_INFO}
 
