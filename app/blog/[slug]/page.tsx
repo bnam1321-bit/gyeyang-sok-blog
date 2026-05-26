@@ -152,6 +152,44 @@ export default async function BlogPostPage({ params }: Props) {
                 )}
 
                 
+                {/* Author & Clinic Info */}
+                <div className="bg-white rounded-3xl p-8 sm:p-10 mb-12 border border-slate-200 shadow-lg">
+                    <div className="flex items-start gap-5 mb-8">
+                        <div className="w-20 h-20 rounded-2xl bg-slate-50 flex items-center justify-center text-primary text-4xl font-bold shadow-inner border border-slate-100">
+                            🏥
+                        </div>
+                        <div>
+                            <h3 className="text-2xl font-black text-slate-900 mb-2">{CLINIC_NAME}</h3>
+                            <p className="text-primary font-bold">25년 임상경험 내과 전문의가 전하는 건강정보</p>
+                        </div>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed mb-8 break-keep text-lg">
+                        본 콘텐츠는 의료광고법을 준수하며, 검증된 의학 정보를 바탕으로 환자분들의 이해를 돕기 위해 작성되었습니다.
+                        정확한 진단과 치료를 위해서는 반드시 전문의와 상담하시기 바랍니다.
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-6 text-sm mb-8 pt-8 border-t border-slate-100">
+                        <div className="flex items-center text-slate-700 font-bold">
+                            <span className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-xl shadow-sm border border-slate-100">📍</span>
+                            {CLINIC_ADDRESS}
+                        </div>
+                        <div className="flex items-center text-slate-700 font-bold">
+                            <span className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center mr-3 text-xl shadow-sm border border-slate-100">📞</span>
+                            {CLINIC_PHONE}
+                        </div>
+                    </div>
+
+                    <div className="flex justify-end">
+                        <a
+                            href={`https://github.com/bnam1321-bit/gyeyang-sok-blog/edit/master/content/posts/${encodeURIComponent(post.slug)}.md`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-slate-400 hover:text-slate-600 text-xs underline decoration-slate-300 underline-offset-4 transition-colors"
+                        >
+                            수정 요청
+                        </a>
+                    </div>
+                </div>
+
                 {/* Latest Posts Section */}
                 <div className="mt-20 pt-16 border-t border-slate-200">
                     <div className="flex justify-between items-end mb-10">
