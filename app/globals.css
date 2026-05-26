@@ -26,6 +26,13 @@
   --color-background: var(--color-bg);
   --color-foreground: var(--color-text);
   --font-sans: var(--font-noto);
+  
+  --color-primary: var(--color-primary);
+  --color-primary-light: var(--color-primary-light);
+  --color-accent: var(--color-accent);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-text-light: var(--color-text-light);
+  --color-border: var(--color-border);
 }
 
 
