@@ -7,7 +7,7 @@ export default function Header() {
     return (
         <header className="sticky top-0 z-[1000] bg-white border-b border-slate-100 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-20">
+                <div className="flex justify-between items-center h-[100px]">
                     {/* Logo Area */}
                     <Link href="/" className="flex items-center">
                         <Image 
@@ -15,7 +15,8 @@ export default function Header() {
                             alt="인천계양속편한내과"
                             width={240}
                             height={60}
-                            className="h-14 w-auto object-contain"
+                            style={{ height: '156px', width: 'auto' }}
+                            className="object-contain"
                         />
                     </Link>
 
