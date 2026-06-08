@@ -38,8 +38,8 @@ export default function BlogGrid({ posts }: { posts: any[] }) {
               <Link key={post.slug} href={`/blog/${post.slug}`} className="group">
                 <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:-translate-y-2">
                   <div className="relative h-52 w-full overflow-hidden">
-                    <TypographicCover title={post.title} tags={post.tags} slug={post.slug} />
-                    <div className="absolute top-4 left-4">
+                    <TypographicCover title={post.title} tags={post.tags} slug={post.slug} showTags={false} />
+                    <div className="absolute top-6 left-6 sm:top-8 sm:left-8 z-10">
                       <span className="px-3 py-1 bg-accent/90 backdrop-blur-md text-white text-[10px] font-bold rounded-full uppercase tracking-tighter">
                         {post.tags?.[0] || 'Health'}
                       </span>

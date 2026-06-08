@@ -75,14 +75,14 @@ export default function TypographicCover({
                         </span>
                     )}
                     {/* Decorative Icon */}
-                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm">
+                    <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center backdrop-blur-sm ml-auto">
                         <span className="text-lg">✨</span>
                     </div>
                 </div>
 
                 {/* Center: Main Title */}
                 <div className="mt-auto mb-auto">
-                    <h2 className="text-2xl sm:text-3xl font-black text-white leading-tight drop-shadow-md break-keep line-clamp-3">
+                    <h2 className="text-lg sm:text-2xl font-black text-white leading-tight drop-shadow-md break-keep line-clamp-3">
                         {title}
                     </h2>
                 </div>
