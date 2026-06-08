@@ -141,11 +141,11 @@ export default function ServicesPage() {
                         진료 및 검진 예약은 전화로 문의 주시면 대기 시간을 최소화하여 편리하게 안내해 드립니다.
                     </p>
                     <a 
-                        href="tel:032-568-8275" 
+                        href="tel:032-545-8837" 
                         className="inline-flex items-center gap-3 px-10 py-5 bg-accent text-white font-black rounded-2xl hover:scale-105 transition-all shadow-xl"
                     >
                         <span>📞</span>
-                        <span className="text-2xl">032.568.8275</span>
+                        <span className="text-2xl">032.545.8837</span>
                     </a>
                 </div>
             </div>

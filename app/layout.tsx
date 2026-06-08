@@ -12,7 +12,7 @@ const jsonLd = {
   "name": "인천계양속편한내과",
   "image": "/logo.jpg",
   "url": "https://gyeyang-sok-blog.vercel.app",
-  "telephone": "032-568-8275",
+  "telephone": "032-545-8837",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "인천광역시 계양구 용종로 2",

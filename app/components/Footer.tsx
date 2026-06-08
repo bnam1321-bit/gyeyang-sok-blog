@@ -44,7 +44,7 @@ export default function Footer() {
                             </li>
                             <li className="flex items-center gap-3">
                                 <span className="text-accent">📞</span>
-                                <span>032-568-8275</span>
+                                <span>032-545-8837</span>
                             </li>
                         </ul>
                     </div>

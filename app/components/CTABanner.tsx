@@ -19,11 +19,11 @@ export default function CTABanner() {
           </div>
           
           <a 
-            href="tel:032-568-8275" 
+            href="tel:032-545-8837" 
             className="group px-10 py-6 bg-white text-accent font-black text-2xl rounded-2xl hover:scale-105 transition-all shadow-2xl flex items-center gap-4"
           >
             <span className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform">📞</span>
-            032.568.8275
+            032.545.8837
           </a>
         </div>
       </div>

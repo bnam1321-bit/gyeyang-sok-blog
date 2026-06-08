@@ -50,7 +50,7 @@ export default function HoursMap() {
             <div className="space-y-4 mb-10">
               <div className="flex items-center gap-4 text-slate-700">
                 <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-lg">📞</div>
-                <span className="text-xl font-bold">032-568-8275</span>
+                <span className="text-xl font-bold">032-545-8837</span>
               </div>
               <div className="flex items-center gap-4 text-slate-700">
                 <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-lg">🚇</div>
