@@ -7195,13 +7195,14 @@ function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPo
       )}
 
       {/* HERO - Variant A */}
-      <section id="hero" data-screen-label="hero" style={{
+      <section id="hero" data-screen-label="hero" className="hero-a-container" style={{
         minHeight: "90vh", position: "relative", overflow: "hidden", background: "#f0f4f8",
       }}>
         {/* Doctor photo - full section, no filter */}
         <img
           src={window.__resources?.doctorsImg || "uploads/doctors.jpg"}
           alt="속편한내과 의료진"
+          className="hero-a-img"
           style={{
             width: "100%", height: "100%", minHeight: "90vh",
             objectFit: "cover", objectPosition: "center 30%",
@@ -7209,13 +7210,13 @@ function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPo
           }}
         />
         {/* Gradient only on top ~38% where faces are NOT */}
-        <div style={{
+        <div className="hero-a-gradient" style={{
           position: "absolute", top: 0, left: 0, right: 0, height: "42%",
           background: "linear-gradient(to bottom, rgba(240,244,248,0.97) 0%, rgba(240,244,248,0.92) 70%, transparent 100%)",
         }} />
 
         {/* Text — sits within the top empty white area */}
-        <div style={{
+        <div className="hero-a-text" style={{
           position: "absolute", top: 0, left: 0, right: 0,
           zIndex: 2, textAlign: "center",
           padding: "48px 5% 0",
@@ -7239,7 +7240,7 @@ function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPo
             1999년 개원 이래 인천 계양구를 지켜온 속편한내과는<br/>
             전문의 6인이 협진하여 정확하고 전문적인 진료를 제공합니다.
           </p>
-          <div style={{ display: "flex", gap: 20, justifyContent: "center", marginBottom: 18, flexWrap: "wrap" }}>
+          <div className="hero-a-bullets" style={{ display: "flex", gap: 20, justifyContent: "center", marginBottom: 18, flexWrap: "wrap" }}>
             {["내과 전문의 6인 상주 협진 체계", "고혈압·당뇨·소화기 장기 관리", "건강검진부터 만성질환까지 원스톱"].map((t, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, color: "#3d4a63", fontWeight: 600 }}>
                 <div style={{ width: 5, height: 5, borderRadius: "50%", background: "oklch(55% 0.18 210)", flexShrink: 0 }} />
@@ -7249,7 +7250,7 @@ function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPo
           </div>
         </div>
         {/* Buttons - bottom of hero, below the doctors */}
-        <div style={{
+        <div className="hero-a-buttons" style={{
           position: "absolute", bottom: 36, left: 0, right: 0,
           zIndex: 3, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
         }}>
@@ -7908,6 +7909,56 @@ function App() {
           .mobile-menu-btn { display: flex !important; }
           .hero-grid, .hero-split, .hours-grid { grid-template-columns: 1fr !important; }
           .hero-split > div { min-height: auto !important; padding: 60px 7% !important; }
+          
+          /* Hero Variant A Mobile Fixes */
+          .hero-a-container {
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: auto !important;
+            height: auto !important;
+            position: relative !important;
+            background: #f0f4f8 !important;
+          }
+          .hero-a-img {
+            position: relative !important;
+            inset: auto !important;
+            width: 100% !important;
+            height: auto !important;
+            min-height: auto !important;
+            object-fit: cover !important;
+            object-position: center 20% !important;
+            aspect-ratio: 1.5 / 1 !important;
+            display: block !important;
+          }
+          .hero-a-gradient {
+            display: none !important;
+          }
+          .hero-a-text {
+            position: static !important;
+            padding: 40px 20px 20px !important;
+            background: #f0f4f8 !important;
+          }
+          .hero-a-bullets {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 12px !important;
+            margin-bottom: 24px !important;
+          }
+          .hero-a-buttons {
+            position: static !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 10px !important;
+            padding: 0 20px 40px !important;
+            background: #f0f4f8 !important;
+          }
+          .hero-a-buttons a, .hero-a-buttons button {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 14px 20px !important;
+            font-size: 15px !important;
+          }
         }
       `}</style>
 
