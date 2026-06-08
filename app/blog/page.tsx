@@ -51,23 +51,18 @@ export default function BlogPage() {
                                     style={{ animationDelay: `${index * 100}ms` }}
                                 >
                                     {/* Thumbnail with Gradient Overlay */}
-                                    <div className="relative h-56 bg-slate-200 overflow-hidden">
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 to-transparent"></div>
-                                        <div className="absolute inset-0 flex items-center justify-center backdrop-blur-[1px]">
-                                            <div className="w-20 h-20 rounded-2xl bg-white/90 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
-                                                <span className="text-5xl">🏥</span>
-                                            </div>
-                                        </div>
+                                    <div className="relative h-56 w-full overflow-hidden">
+                                        <TypographicCover title={post.title} tags={post.tags} slug={post.slug} showTags={false} />
                                         {/* Floating Tag */}
                                         {post.tags?.[0] && (
-                                            <div className="absolute top-4 left-4">
+                                            <div className="absolute top-4 left-4 z-10">
                                                 <span className="px-4 py-2 bg-primary text-white rounded-full text-xs font-bold shadow-md backdrop-blur-sm border border-white/20">
                                                     {post.tags[0]}
                                                 </span>
                                             </div>
                                         )}
                                         {/* Date Badge */}
-                                        <div className="absolute bottom-4 right-4">
+                                        <div className="absolute bottom-4 right-4 z-10">
                                             <div className="px-3 py-1.5 bg-black/40 backdrop-blur-md text-white rounded-full text-xs font-semibold">
                                                 {post.date}
                                             </div>
