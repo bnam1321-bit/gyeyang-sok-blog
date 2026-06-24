@@ -3,7 +3,7 @@
 const mainServices = [
     { 
         title: '위·대장 내시경', 
-        desc: '대학병원급 최상위 내시경 장비인 올림푸스 290을 도입하여, 미세한 병변까지 놓치지 않는 정밀한 검사와 당일 용종 절제술을 시행합니다.', 
+        desc: '대학병원급 최상위 내시경 장비인 올림푸스 CV-290을 도입하여, 미세한 병변까지 놓치지 않는 정밀한 검사와 당일 용종 절제술을 시행합니다.', 
         icon: '🔍', 
         color: 'bg-primary' 
     },
@@ -38,7 +38,7 @@ export default function ServicesPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
                     <h1 className="text-4xl sm:text-5xl font-black text-white mb-6">진료 안내</h1>
                     <p className="text-xl text-slate-300 max-w-3xl mx-auto break-keep font-medium leading-relaxed">
-                        인천계양속편한내과는 대학병원급 최상위 내시경 장비인 <span className="text-white font-black">올림푸스 290</span>과 <span className="text-white font-black">정밀 CT 촬영 장비</span>를 보유하고 있으며, 6인 전문의의 협진으로 수준 높은 진료 서비스를 제공합니다.
+                        인천계양속편한내과는 대학병원급 최상위 내시경 장비인 <span className="text-white font-black">올림푸스 CV-290</span>과 <span className="text-white font-black">정밀 CT 촬영 장비</span>를 보유하고 있으며, 6인 전문의의 협진으로 수준 높은 진료 서비스를 제공합니다.
                     </p>
                 </div>
             </section>

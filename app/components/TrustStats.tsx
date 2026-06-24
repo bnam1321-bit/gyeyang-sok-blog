@@ -7,7 +7,7 @@ const stats = [
     icon: '🏥',
   },
   {
-    title: '올림푸스 290',
+    title: '올림푸스 CV-290',
     desc: '최상위 내시경 정밀 검사 및 용종 절제',
     icon: '🔍',
   },
