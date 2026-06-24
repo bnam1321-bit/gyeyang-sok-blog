@@ -13,7 +13,7 @@ const stats = [
   },
   {
     title: '정밀 CT & 초음파',
-    desc: '대학병원급 CT 및 고해상도 초음파 검사',
+    desc: '정밀 CT 및 고해상도 초음파 검사',
     icon: '📡',
   },
   {

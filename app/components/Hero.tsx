@@ -28,7 +28,7 @@ export default function Hero() {
             <span className="text-accent">평생 건강 파트너</span>
           </h1>
           <p className="text-lg sm:text-xl text-slate-300 font-medium leading-relaxed mb-10 break-keep">
-            대학병원급 첨단 장비와 분야별 세분화된 6인 전문의 협진 시스템으로<br className="hidden sm:block" />
+            정밀 첨단 장비와 분야별 세분화된 6인 전문의 협진 시스템으로<br className="hidden sm:block" />
             정확한 진단과 따뜻한 진료를 약속드립니다.
           </p>
 
