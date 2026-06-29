@@ -47,7 +47,7 @@ export default function HoursMap() {
               계산프라자 <span className="text-primary font-black underline decoration-accent decoration-4 underline-offset-4">202·304·305호</span>
             </p>
             
-            <div className="space-y-4 mb-10">
+            <div className="space-y-4 mb-8">
               <div className="flex items-center gap-4 text-slate-700">
                 <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-lg">📞</div>
                 <span className="text-xl font-bold">032-545-8837</span>
@@ -56,6 +56,20 @@ export default function HoursMap() {
                 <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-lg">🚇</div>
                 <span className="text-lg font-bold">인천 1호선 임학역 / 계산역 인근</span>
               </div>
+            </div>
+
+            <div className="w-full h-64 sm:h-72 mb-8 rounded-2xl overflow-hidden shadow-md border border-slate-100 relative group">
+              <iframe 
+                src="https://maps.google.com/maps?q=인천광역시%20계양구%20용종로%202&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen={false} 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 z-0 grayscale-[30%] opacity-90 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100"
+              ></iframe>
+              <div className="absolute inset-0 pointer-events-none rounded-2xl ring-1 ring-inset ring-black/5"></div>
             </div>
 
             <div className="flex flex-wrap gap-4">
