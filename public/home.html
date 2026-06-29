@@ -7371,16 +7371,12 @@ function VariantA({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPo
               <span style={{ fontSize: 12, fontWeight: 700, color: "oklch(75% 0.15 210)", letterSpacing: "0.1em", textTransform: "uppercase" }}>LOCATION</span>
               <h2 style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 800, color: "white", marginTop: 10, marginBottom: 32 }}>오시는 길</h2>
               {/* Map placeholder */}
-              <div style={{
-                background: "rgba(255,255,255,0.06)", borderRadius: 16,
-                height: 200, display: "flex", flexDirection: "column",
-                alignItems: "center", justifyContent: "center", gap: 10,
-                border: "1.5px dashed rgba(255,255,255,0.2)", marginBottom: 20,
-                cursor: "pointer", color: "rgba(255,255,255,0.4)",
-              }} onClick={() => window.open("https://naver.me/5ssTH0SB", "_blank")}>
-                <MapIcon />
-                <span style={{ fontSize: 13, fontWeight: 500 }}>네이버 지도에서 보기 →</span>
-                <span style={{ fontSize: 11 }}>클릭하여 길찾기</span>
+              {/* Map iframe */}
+              <div style={{ width: "100%", height: 220, marginBottom: 20, borderRadius: 16, overflow: "hidden", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <iframe 
+                  src="https://maps.google.com/maps?q=인천광역시%20계양구%20용종로%202&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" height="100%" style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) contrast(80%)" }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
                 {[
@@ -7703,15 +7699,11 @@ function VariantB({ activePage, setActivePage, mobileOpen, setMobileOpen, blogPo
                 <div style={{ width: 4, height: 32, background: "#1a2a5e" }} />
                 <h2 style={{ fontSize: "clamp(1.4rem, 2.5vw, 2rem)", fontWeight: 900, color: "#1a2a5e" }}>오시는 길</h2>
               </div>
-              <div style={{
-                border: "2px solid #1a2a5e", height: 200,
-                display: "flex", flexDirection: "column",
-                alignItems: "center", justifyContent: "center", gap: 10,
-                cursor: "pointer", color: "#8892a4", marginBottom: 24,
-              }} onClick={() => window.open("https://naver.me/5ssTH0SB", "_blank")}>
-                <MapIcon />
-                <span style={{ fontSize: 13, fontWeight: 600, color: "#1a2a5e" }}>네이버 지도에서 보기 →</span>
-                <span style={{ fontSize: 11 }}>클릭하여 길찾기</span>
+              <div style={{ width: "100%", height: 220, marginBottom: 24, borderRadius: 12, overflow: "hidden", border: "1px solid #e8ecf4", boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}>
+                <iframe 
+                  src="https://maps.google.com/maps?q=인천광역시%20계양구%20용종로%202&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" height="100%" style={{ border: 0, filter: "grayscale(20%) contrast(110%)" }} allowFullScreen={false} loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
               {[
                 { label: "주소", value: "인천광역시 계양구 용종로 2\n계산프라자 202·304·305호" },
