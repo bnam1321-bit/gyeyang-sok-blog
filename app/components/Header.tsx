@@ -11,9 +11,9 @@ export default function Header() {
                     {/* Logo Area */}
                     <Link href="/" className="flex items-center">
                         <img 
-                            src="/images/extracted/logo_cropped.png"
+                            src="/images/extracted/61d273a3-b287-4754-94fe-8d90a61ddd1d.png"
                             alt="인천계양속편한내과"
-                            className="h-[20px] sm:h-[28px] w-auto object-contain"
+                            className="h-[60px] sm:h-[80px] w-auto object-contain"
                         />
                     </Link>
 
