@@ -13,7 +13,7 @@ export default function Header() {
                         <img 
                             src="/images/extracted/61d273a3-b287-4754-94fe-8d90a61ddd1d.png"
                             alt="인천계양속편한내과"
-                            className="h-[60px] sm:h-[80px] w-auto object-contain"
+                            className="h-[90px] sm:h-[120px] w-auto object-contain"
                         />
                     </Link>
 
