@@ -7,14 +7,12 @@ export default function Header() {
     return (
         <header className="sticky top-0 z-[1000] bg-white border-b border-slate-100 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-[100px]">
+                <div className="flex justify-between items-center py-2">
                     {/* Logo Area */}
                     <Link href="/" className="flex items-center">
-                        <Image 
-                            src="/images/extracted/61d273a3-b287-4754-94fe-8d90a61ddd1d.png"
+                        <img 
+                            src="/images/extracted/abb9385e-cd27-4803-925c-53c237ff0b10.png"
                             alt="인천계양속편한내과"
-                            width={240}
-                            height={60}
                             style={{ height: '156px', width: 'auto' }}
                             className="object-contain"
                         />
