@@ -2,7 +2,7 @@
 
 const mainServices = [
     { 
-        title: '위·대장 내시경', 
+        title: '소화기 클리닉 (위·대장 내시경)', 
         desc: '정밀 최상위 내시경 장비인 올림푸스 CV-290을 도입하여, 미세한 병변까지 놓치지 않는 정밀한 검사와 당일 용종 절제술을 시행합니다.', 
         icon: '🔍', 
         color: 'bg-primary' 
