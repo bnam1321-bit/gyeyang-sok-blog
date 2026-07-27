@@ -41,7 +41,7 @@ const jsonLd = [
       }
     ],
     "medicalSpecialty": "InternalMedicine",
-    "description": "25년 이상의 업력, 6인의 내과 전문의가 함께하는 인천 계양구 대표 내과 의원"
+    "description": "풍부한 임상 경험의 의료진이 진료하는 인천 계양구 대표 내과 의원"
   },
   {
     "@context": "https://schema.org",
@@ -61,9 +61,9 @@ const notoSansKR = Noto_Sans_KR({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sokgyeyang.co.kr'),
-  title: "인천계양속편한내과 | 계양구 내과 전문의 6인 진료",
-  description: "인천 계양구 속편한내과. 25년 이상 업력의 내과 전문의 6인 진료. 위대장내시경, 건강검진, 만성질환 관리, CT촬영까지.",
-  keywords: "계양구 내과, 인천 계양 내과, 속편한내과, 계양구 위내시경, 계양구 대장내시경, 계양구 건강검진, 인천 내과 전문의",
+  title: "인천계양속편한내과 | 계양구 내과 정밀 진료",
+  description: "인천 계양구 속편한내과. 위대장내시경, 5대 국가건강검진, 만성질환 관리, 정밀 CT/초음파 검사 등 체계적인 내과 진료 시스템을 제공합니다.",
+  keywords: "계양구 내과, 인천 계양 내과, 속편한내과, 계양구 위내시경, 계양구 대장내시경, 계양구 건강검진",
 };
 
 export default function RootLayout({
