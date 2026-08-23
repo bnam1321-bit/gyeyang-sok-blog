@@ -1,6 +1,7 @@
 import { getPostBySlug, getAllPosts } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { CLINIC_NAME, SITE_URL, CLINIC_PHONE, CLINIC_ADDRESS } from '@/lib/constants';
@@ -131,7 +132,30 @@ export default async function BlogPostPage({ params }: Props) {
                         prose-blockquote:border-accent prose-blockquote:bg-accent/5 prose-blockquote:rounded-2xl prose-blockquote:py-2 prose-blockquote:px-8
                         prose-img:rounded-3xl prose-img:shadow-lg
                     ">
-                        <ReactMarkdown>{post.content}</ReactMarkdown>
+                        <ReactMarkdown 
+                            remarkPlugins={[remarkGfm]}
+                            components={{
+                                table: ({ node, ...props }) => (
+                                    <div className="overflow-x-auto my-8 border border-slate-200 rounded-2xl shadow-sm bg-white">
+                                        <table className="w-full text-left border-collapse min-w-[500px]" {...props} />
+                                    </div>
+                                ),
+                                thead: ({ node, ...props }) => (
+                                    <thead className="bg-slate-100/80 border-b border-slate-200" {...props} />
+                                ),
+                                th: ({ node, ...props }) => (
+                                    <th className="py-3.5 px-4 text-slate-900 font-bold text-sm sm:text-base border-r border-slate-200 last:border-r-0" {...props} />
+                                ),
+                                tr: ({ node, ...props }) => (
+                                    <tr className="border-b border-slate-100 hover:bg-slate-50/60 transition-colors last:border-b-0" {...props} />
+                                ),
+                                td: ({ node, ...props }) => (
+                                    <td className="py-3.5 px-4 text-slate-600 text-sm sm:text-base border-r border-slate-100 last:border-r-0 leading-relaxed" {...props} />
+                                ),
+                            }}
+                        >
+                            {post.content}
+                        </ReactMarkdown>
                     </div>
                 </div>
 
