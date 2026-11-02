@@ -1,4 +1,13 @@
-'use client';
+import { Metadata } from 'next';
+import { CLINIC_NAME, SITE_URL } from '@/lib/constants';
+
+export const metadata: Metadata = {
+    title: `진료 안내 | ${CLINIC_NAME} (위·대장내시경·5대암검진·만성질환·CT)`,
+    description: `${CLINIC_NAME} 진료 과목 안내. 올림푸스 CV-290 위·대장내시경 및 당일 용종절제술, 국민건강보험공단 5대 국가암검진, 고혈압·당뇨 만성질환 클리닉, 정밀 CT 및 초음파 진단.`,
+    alternates: {
+        canonical: `${SITE_URL}/services`,
+    },
+};
 
 const mainServices = [
     { 

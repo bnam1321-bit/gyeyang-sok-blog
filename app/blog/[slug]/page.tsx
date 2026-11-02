@@ -10,6 +10,43 @@ type Props = {
     params: Promise<{ slug: string }>;
 };
 
+function extractFaqs(markdown: string): { question: string; answer: string }[] {
+    const faqs: { question: string; answer: string }[] = [];
+    const lines = markdown.split(/\r?\n/);
+    let currentQ = '';
+    let currentA: string[] = [];
+
+    for (const rawLine of lines) {
+        const line = rawLine.trim();
+        const qMatch = line.match(/^(?:>\s*)?(?:\*\*|#+\s*)?Q\d*[\.\:\s]\s*(.+?)(?:\*\*)?$/i);
+        const aMatch = line.match(/^(?:>\s*)?(?:\*\*|#+\s*)?A\d*[\.\:\s]\s*(.+?)(?:\*\*)?$/i);
+
+        if (qMatch) {
+            if (currentQ && currentA.length > 0) {
+                faqs.push({ question: currentQ, answer: currentA.join(' ').trim() });
+            }
+            currentQ = qMatch[1].replace(/\*\*/g, '').trim();
+            currentA = [];
+        } else if (aMatch && currentQ) {
+            currentA.push(aMatch[1].replace(/\*\*/g, '').trim());
+        } else if (currentQ && currentA.length > 0 && line && !line.startsWith('#') && !line.startsWith('---') && !line.startsWith('> 💡')) {
+            currentA.push(line.replace(/\*\*/g, '').trim());
+        } else if (line.startsWith('#') || line.startsWith('---')) {
+            if (currentQ && currentA.length > 0) {
+                faqs.push({ question: currentQ, answer: currentA.join(' ').trim() });
+                currentQ = '';
+                currentA = [];
+            }
+        }
+    }
+
+    if (currentQ && currentA.length > 0) {
+        faqs.push({ question: currentQ, answer: currentA.join(' ').trim() });
+    }
+
+    return faqs;
+}
+
 export async function generateStaticParams() {
     const posts = getAllPosts();
     return posts.map((post) => ({
@@ -41,6 +78,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         ],
         alternates: {
             canonical: `${SITE_URL}/blog/${post.slug}`,
+            types: {
+                'text/markdown': `${SITE_URL}/llms-full.txt`,
+            },
         },
         openGraph: {
             title: post.title,
@@ -62,18 +102,92 @@ export default async function BlogPostPage({ params }: Props) {
         notFound();
     }
 
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: post.title,
-        description: post.description,
-        datePublished: post.date,
-        author: {
-            '@type': 'MedicalClinic',
-            name: CLINIC_NAME,
-            url: SITE_URL
+    const faqs = extractFaqs(post.content);
+
+    const jsonLd: Record<string, unknown>[] = [
+        {
+            '@context': 'https://schema.org',
+            '@type': ['MedicalWebPage', 'BlogPosting'],
+            '@id': `${SITE_URL}/blog/${post.slug}#article`,
+            mainEntityOfPage: {
+                '@type': 'WebPage',
+                '@id': `${SITE_URL}/blog/${post.slug}`,
+            },
+            headline: post.title,
+            description: post.description,
+            datePublished: post.date,
+            dateModified: post.date,
+            inLanguage: 'ko-KR',
+            keywords: post.tags?.join(', '),
+            medicalAudience: {
+                '@type': 'MedicalAudience',
+                audienceType: 'Patient',
+            },
+            about: (post.tags || []).map((tag) => ({
+                '@type': 'MedicalCondition',
+                name: tag,
+            })),
+            author: {
+                '@type': 'MedicalClinic',
+                '@id': `${SITE_URL}/#clinic`,
+                name: CLINIC_NAME,
+                url: SITE_URL,
+                telephone: CLINIC_PHONE,
+                address: {
+                    '@type': 'PostalAddress',
+                    streetAddress: CLINIC_ADDRESS,
+                    addressLocality: '계양구',
+                    addressRegion: '인천광역시',
+                    addressCountry: 'KR',
+                },
+            },
+            publisher: {
+                '@type': 'MedicalClinic',
+                '@id': `${SITE_URL}/#clinic`,
+                name: CLINIC_NAME,
+                url: SITE_URL,
+            },
         },
-    };
+        {
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+                {
+                    '@type': 'ListItem',
+                    position: 1,
+                    name: CLINIC_NAME,
+                    item: SITE_URL,
+                },
+                {
+                    '@type': 'ListItem',
+                    position: 2,
+                    name: '건강정보 블로그',
+                    item: `${SITE_URL}/blog`,
+                },
+                {
+                    '@type': 'ListItem',
+                    position: 3,
+                    name: post.title,
+                    item: `${SITE_URL}/blog/${post.slug}`,
+                },
+            ],
+        },
+    ];
+
+    if (faqs.length > 0) {
+        jsonLd.push({
+            '@context': 'https://schema.org',
+            '@type': 'FAQPage',
+            mainEntity: faqs.map((f) => ({
+                '@type': 'Question',
+                name: f.question,
+                acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: f.answer,
+                },
+            })),
+        });
+    }
 
     return (
         <div className="min-h-screen bg-slate-50">
@@ -94,14 +208,21 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
             </div>
 
-            <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+            <article
+                className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16"
+                itemScope
+                itemType="https://schema.org/MedicalWebPage"
+            >
+                <meta itemProp="inLanguage" content="ko-KR" />
+                <meta itemProp="datePublished" content={post.date} />
+
                 {/* Article Header */}
                 <header className="mb-12">
                     <div className="flex items-center gap-3 mb-6">
                         <span className="px-4 py-2 bg-primary text-white rounded-full text-sm font-bold shadow-md">
                             {post.tags?.[0] || '건강정보'}
                         </span>
-                        <time className="text-slate-500 text-sm flex items-center">
+                        <time dateTime={post.date} className="text-slate-500 text-sm flex items-center">
                             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
@@ -109,19 +230,19 @@ export default async function BlogPostPage({ params }: Props) {
                         </time>
                     </div>
 
-                    <h1 className="text-4xl sm:text-5xl font-black text-slate-900 leading-[1.2] mb-6 break-keep tracking-tight">
+                    <h1 itemProp="headline" className="text-4xl sm:text-5xl font-black text-slate-900 leading-[1.2] mb-6 break-keep tracking-tight">
                         {post.title}
                     </h1>
 
                     {post.description && (
-                        <p className="text-xl text-slate-600 leading-relaxed border-l-4 border-accent pl-6 py-2 break-keep font-medium">
+                        <p itemProp="description" className="text-xl text-slate-600 leading-relaxed border-l-4 border-accent pl-6 py-2 break-keep font-medium">
                             {post.description}
                         </p>
                     )}
                 </header>
 
                 {/* Article Content */}
-                <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-12 mb-12 border border-white">
+                <div itemProp="mainContentOfPage" className="bg-white rounded-3xl shadow-xl p-8 sm:p-12 mb-12 border border-white">
                     <div className="prose prose-lg max-w-none
                         prose-headings:text-primary prose-headings:font-black
                         prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:pb-4 prose-h2:border-b prose-h2:border-slate-100
@@ -233,7 +354,7 @@ export default async function BlogPostPage({ params }: Props) {
                             <Link key={latestPost.slug} href={`/blog/${latestPost.slug}`} className="group block">
                                 <div className="aspect-[16/10] bg-slate-100 rounded-2xl mb-4 overflow-hidden border border-slate-200 shadow-sm transition-all group-hover:shadow-md group-hover:-translate-y-1">
                                     {latestPost.coverImage ? (
-                                        <img src={latestPost.coverImage} alt="" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                                        <img src={latestPost.coverImage} alt={latestPost.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                                     ) : (
                                         <div className="w-full h-full flex items-center justify-center text-slate-300">
                                             <span className="text-4xl">🏥</span>
@@ -243,7 +364,7 @@ export default async function BlogPostPage({ params }: Props) {
                                 <h3 className="font-bold text-slate-900 line-clamp-2 group-hover:text-primary transition-colors leading-snug">
                                     {latestPost.title}
                                 </h3>
-                                <time className="text-xs text-slate-400 mt-2 block font-medium">{latestPost.date}</time>
+                                <time dateTime={latestPost.date} className="text-xs text-slate-400 mt-2 block font-medium">{latestPost.date}</time>
                             </Link>
                         ))}
                     </div>

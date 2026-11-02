@@ -16,19 +16,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
         {
             url: `${SITE_URL}`,
             lastModified: new Date().toISOString().split('T')[0],
-            changeFrequency: 'monthly' as const,
+            changeFrequency: 'weekly' as const,
             priority: 1.0,
         },
         {
             url: `${SITE_URL}/blog`,
             lastModified: new Date().toISOString().split('T')[0],
-            changeFrequency: 'weekly' as const,
+            changeFrequency: 'daily' as const,
             priority: 0.9,
         },
         {
             url: `${SITE_URL}/services`,
             lastModified: new Date().toISOString().split('T')[0],
             changeFrequency: 'monthly' as const,
+            priority: 0.9,
+        },
+        {
+            url: `${SITE_URL}/llms.txt`,
+            lastModified: new Date().toISOString().split('T')[0],
+            changeFrequency: 'weekly' as const,
+            priority: 0.9,
+        },
+        {
+            url: `${SITE_URL}/llms-full.txt`,
+            lastModified: new Date().toISOString().split('T')[0],
+            changeFrequency: 'weekly' as const,
             priority: 0.8,
         },
     ];
